@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบ test</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <button class="share-btn" id="share-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 5px; vertical-align: text-top;">
+            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+        </svg>
+        บันทึกผล
+    </button>
+
+    <div class="book-container">
+        <!-- Cover Page -->
+        <div class="page active" id="page-0">
+            <div class="cover-content">
+                <h1>การประเมินความเสี่ยงโรคหลอดเลือดสมอง</h1>
+                <h2>รู้ทัน ป้องกันก่อนสาย</h2>
+                <button class="start-btn">เริ่มต้นการประเมิน</button>
+                <div class="footer">สุขภาพที่ดีเริ่มต้นที่ตัวคุณ</div>
+            </div>
+        </div>
+
+        <!-- User Information Page -->
+        <div class="page" id="page-1">
+            <div class="page-content">
+                <div class="info-section">
+                    <h2>ข้อมูลส่วนตัวของคุณ</h2>
+                    <p>กรุณากรอกข้อมูลพื้นฐานเพื่อการประเมินความเสี่ยงที่แม่นยำยิ่งขึ้น</p>
+                    
+                    <div class="info-form">
+                        <div class="form-group">
+                            <label for="age">อายุ (ปี)</label>
+                            <input type="number" id="age" min="1" max="120" placeholder="เช่น 45">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="weight">น้ำหนัก (กก.)</label>
+                            <input type="number" id="weight" min="1" max="300" placeholder="เช่น 65">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="height">ส่วนสูง (ซม.)</label>
+                            <input type="number" id="height" min="50" max="250" placeholder="เช่น 170">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="gender">เพศ</label>
+                            <select id="gender">
+                                <option value="">เลือกเพศ</option>
+                                <option value="ชาย">ชาย</option>
+                                <option value="หญิง">หญิง</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn" id="info-next-btn" disabled>ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 1/10</div>
+        </div>
+
+        <!-- Question Pages -->
+        <div class="page" id="page-2">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>ความดันโลหิตสูงกับความเสี่ยง</h2>
+                    <p>ความดันโลหิตสูงเป็นปัจจัยเสี่ยงอันดับหนึ่งของโรคหลอดเลือดสมอง เพราะทำให้ผนังหลอดเลือดเสียหายและเสื่อมสภาพเร็วขึ้น</p>
+                    <p>ผลกระทบ:</p>
+                    <ul>
+                        <li>เพิ่มแรงดันในหลอดเลือดสมอง 4 เท่า</li>
+                        <li>ทำให้หลอดเลือดสมองเปราะบางและแตกง่าย</li>
+                        <li>เร่งการสะสมของคราบไขมันในหลอดเลือด</li>
+                    </ul>
+                </div>
+                <div class="question-section">
+                    <h3>คุณมีประวัติความดันโลหิตสูงหรือไม่?</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ไม่มี</button>
+                        <button class="option-btn" data-points="2">เคยสูงเป็นครั้งคราว</button>
+                        <button class="option-btn" data-points="4">เป็นระยะเริ่มต้น</button>
+                        <button class="option-btn" data-points="7">เป็นมานานกว่า 5 ปี</button>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn" disabled>ต่อไป</button>
+                
+
+            </div>
+            <div class="progress">หน้า 2/10</div>
+        </div>
+
+        <div class="page" id="page-3">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>โรคเบาหวานกับความเสี่ยง</h2>
+                    <p>ผู้ป่วยเบาหวานมีความเสี่ยงโรคหลอดเลือดสมองเพิ่มขึ้น 2-4 เท่า เนื่องจากน้ำตาลในเลือดสูงทำลายผนังหลอดเลือดและทำให้เลือดข้นหนืด</p>
+                    <p>ผลกระทบ:</p>
+                    <ul>
+                        <li>เพิ่มความเสี่ยงหลอดเลือดตีบตัน</li>
+                        <li>ลดประสิทธิภาพการไหลเวียนเลือด</li>
+                        <li>ทำให้หลอดเลือดเสื่อมสภาพเร็วกว่าปกติ</li>
+                    </ul>
+                </div>
+                <div class="question-section">
+                    <h3>คุณมีระดับน้ำตาลในเลือดสูงหรือเป็นเบาหวานหรือไม่?</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ปกติ</button>
+                        <button class="option-btn" data-points="2">ระดับน้ำตาลสูงเล็กน้อย</button>
+                        <button class="option-btn" data-points="4">เป็นเบาหวานระยะเริ่มต้น</button>
+                        <button class="option-btn" data-points="7">เป็นเบาหวานมานานกว่า 5 ปี</button>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn" disabled>ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 3/10</div>
+        </div>
+
+        <!-- Additional Stroke-Related Conditions -->
+        <div class="page" id="page-4">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>โรคหัวใจห้องบนสั่นพลิ้ว</h2>
+                    <p>ภาวะหัวใจห้องบนสั่นพลิ้ว (Atrial Fibrillation) เป็นภาวะที่หัวใจเต้นผิดปกติ ทำให้เกิดลิ่มเลือดในหัวใจ ซึ่งสามารถเดินทางไปอุดตันหลอดเลือดสมองได้</p>
+                    <p>ผลกระทบ:</p>
+                    <ul>
+                        <li>เพิ่มความเสี่ยงโรคหลอดเลือดสมองถึง 5 เท่า</li>
+                        <li>ลิ่มเลือดจากหัวใจสามารถเดินทางไปสมอง</li>
+                        <li>มักไม่มีอาการเตือนล่วงหน้า</li>
+                    </ul>
+                </div>
+                <div class="question-section">
+                    <h3>คุณเคยได้รับการวินิจฉัยว่าเป็นโรคหัวใจห้องบนสั่นพลิ้วหรือไม่?</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ไม่เคย</button>
+                        <button class="option-btn" data-points="2">เคยมีอาการแต่ไม่ยืนยัน</button>
+                        <button class="option-btn" data-points="4">เป็นบางครั้ง</button>
+                        <button class="option-btn" data-points="7">เป็นประจำ</button>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn" >ก่อนหน้า</button>
+                <button class="nav-btn next-btn" disabled>ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 4/10</div>
+        </div>
+
+        <div class="page" id="page-5">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>โรคหลอดเลือดแดงส่วนปลายตีบ</h2>
+                    <p>โรคหลอดเลือดแดงส่วนปลายตีบ (Peripheral Artery Disease) เป็นสัญญาณเตือนของโรคหลอดเลือดสมอง เพราะแสดงว่ามีการสะสมของคราบไขมันในหลอดเลือดทั่วร่างกาย</p>
+                    <p>ผลกระทบ:</p>
+                    <ul>
+                        <li>เพิ่มความเสี่ยงโรคหลอดเลือดสมอง 2-4 เท่า</li>
+                        <li>บ่งชี้ถึงภาวะหลอดเลือดแข็งตัวทั่วร่างกาย</li>
+                        <li>มักพบในผู้สูบบุหรี่และผู้เป็นเบาหวาน</li>
+                    </ul>
+                </div>
+                <div class="question-section">
+                    <h3>คุณมีอาการปวดขาเวลาเดินหรือเคยวินิจฉัยว่าเป็นโรคหลอดเลือดส่วนปลายตีบหรือไม่?</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ไม่มีอาการ</button>
+                        <button class="option-btn" data-points="2">ปวดเล็กน้อยเวลาเดินไกล</button>
+                        <button class="option-btn" data-points="4">ปวดเวลาเดินระยะสั้น</button>
+                        <button class="option-btn" data-points="7">เคยได้รับการวินิจฉัย</button>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn" disabled>ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 5/10</div>
+        </div>
+        <div class="page" id="page-6">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>โรคหยุดหายใจขณะหลับ</h2>
+                    <p>ภาวะหยุดหายใจขณะหลับ (Sleep Apnea) ทำให้ระดับออกซิเจนในเลือดลดลงและเพิ่มความดันโลหิต ซึ่งเป็นปัจจัยเสี่ยงสำคัญของโรคหลอดเลือดสมอง</p>
+                    <p>ผลกระทบ:</p>
+                    <ul>
+                        <li>เพิ่มความเสี่ยงโรคหลอดเลือดสมอง 2-3 เท่า</li>
+                        <li>ทำให้ความดันโลหิตสูงขึ้น</li>
+                        <li>รบกวนการทำงานของหัวใจ</li>
+                    </ul>
+                </div>
+                <div class="question-section">
+                    <h3>คุณมีอาการนอนกรนเสียงดังหรือเคยได้รับการวินิจฉัยว่าเป็นโรคหยุดหายใจขณะหลับหรือไม่?</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ไม่มีอาการ</button>
+                        <button class="option-btn" data-points="2">นอนกรนบ้างเป็นครั้งคราว</button>
+                        <button class="option-btn" data-points="4">นอนกรนเสียงดังประจำ</button>
+                        <button class="option-btn" data-points="7">ได้รับการวินิจฉัย</button>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn" disabled>ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 6/10</div>
+        </div>
+
+        <div class="page" id="page-7">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>การสูบบุหรี่กับความเสี่ยง</h2>
+                    <p>การสูบบุหรี่เป็นปัจจัยเสี่ยงสำคัญที่ทำให้หลอดเลือดตีบและแข็งตัวเร็วขึ้น</p>
+                    <p>สารนิโคตินในบุหรี่ทำให้:</p>
+                    <ul>
+                        <li>ความดันโลหิตสูงขึ้น</li>
+                        <li>หลอดเลือดหดตัว</li>
+                        <li>เพิ่มโอกาสเกิดลิ่มเลือด</li>
+                    </ul>
+                    <p>ผู้สูบบุหรี่มีความเสี่ยงโรคหลอดเลือดสมองสูงกว่าคนไม่สูบถึง 47%</p>
+                </div>
+                <div class="question-section">
+                    <h3>คุณสูบบุหรี่กี่ครั้งต่อสัปดาห์</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ไม่เคย</button>
+                        <button class="option-btn" data-points="2">1-2 ครั้ง</button>
+                        <button class="option-btn" data-points="4">3-7 ครั้ง</button>
+                        <button class="option-btn" data-points="7">>7 ครั้ง</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn">ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 7/10</div>
+        </div>
+
+        <div class="page" id="page-8">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>ผลกระทบของแอลกอฮอล์</h2>
+                    <p>การดื่มแอลกอฮอล์มากเกินไปส่งผลโดยตรงต่อระบบหลอดเลือดและหัวใจ:</p>
+                    <ul>
+                        <li>เพิ่มความดันโลหิต</li>
+                        <li>ทำให้หัวใจเต้นผิดจังหวะ</li>
+                        <li>เพิ่มระดับไตรกลีเซอไรด์</li>
+                    </ul>
+                    <p>การดื่มมากกว่า 2 แก้วต่อวันเพิ่มความเสี่ยงโรคหลอดเลือดสมอง 34%</p>
+                </div>
+                <div class="question-section">
+                    <h3>คุณดื่มแอลกอฮอล์กี่แก้วต่อสัปดาห์</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="0">ไม่ดื่ม</button>
+                        <button class="option-btn" data-points="2">1-2 แก้ว</button>
+                        <button class="option-btn" data-points="4">3-7 แก้ว</button>
+                        <button class="option-btn" data-points="7">>7 แก้ว</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn">ต่อไป</button>
+            </div>
+            <div class="progress">หน้า 8/10</div>
+        </div>
+
+        <div class="page" id="page-9">
+            <div class="page-content">
+                <div class="story-section">
+                    <h2>การออกกำลังกายและความเสี่ยง</h2>
+                    <p>การขาดการออกกำลังกายเป็นปัจจัยเสี่ยงสำคัญที่นำไปสู่โรคหลอดเลือดสมอง</p>
+                    <ul>
+                        <li>การออกกำลังกายช่วยลดความดันโลหิต</li>
+                        <li>ช่วยควบคุมน้ำหนักและระดับน้ำตาลในเลือด</li>
+                        <li>เพิ่มความยืดหยุ่นของหลอดเลือด</li>
+                        <li>ผู้ที่ออกกำลังกายสม่ำเสมอมีความเสี่ยงลดลง 25-30%</li>
+                    </ul>
+                </div>
+                <div class="question-section">
+                    <h3>คุณออกกำลังกายบ่อยแค่ไหน?</h3>
+                    <div class="options">
+                        <button class="option-btn" data-points="7">แทบไม่ได้ออกกำลังกาย</button>
+                        <button class="option-btn" data-points="4">1-2 ครั้งต่อสัปดาห์</button>
+                        <button class="option-btn" data-points="2">3-4 ครั้งต่อสัปดาห์</button>
+                        <button class="option-btn" data-points="0">5 ครั้งขึ้นไปต่อสัปดาห์</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn prev-btn">ก่อนหน้า</button>
+                <button class="nav-btn next-btn">ดูผลการประเมิน</button>
+            </div>
+            <div class="progress">หน้า 9/10</div>
+        </div>
+
+        <!-- Summary Page -->
+        <div class="page" id="page-10">
+            <div class="summary-container">
+                <div class="answers-section">
+                    <h2>ผลการประเมินของคุณ</h2>
+                    <div id="user-info-display"></div>
+                    <div id="answers-display"></div>
+                </div>
+                <div class="results-section">
+                    <div class="result-box">
+                        <div class="result-value" id="risk-percentage">0%</div>
+                        <div class="result-label">ความเสี่ยงในการเกิดโรค</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-value" id="time-estimate">0 ปี</div>
+                        <div class="result-label">ระยะเวลาประมาณการ</div>
+                    </div>
+                </div>
+                <div class="recommendation-box" id="recommendation-box">
+                    <h3>คำแนะนำสำหรับคุณ</h3>
+                    <p id="recommendation-text">กรุณาตอบคำถามทั้งหมดเพื่อรับคำแนะนำที่เหมาะสม</p>
+                </div>
+                <div style="margin:30px auto 0; text-align:center;">
+                    <button class="restart-btn" id="restart-btn" style="padding: 12px 40px; border-radius: 50px; background: #d35400; color: #fff; border:none; font-size:1.1rem; cursor:pointer;">กลับไปหน้าแรก</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
