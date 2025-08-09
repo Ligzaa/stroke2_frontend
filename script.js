@@ -297,26 +297,17 @@ document.addEventListener('DOMContentLoaded', function() {
         generateRecommendation(riskLevel, totalPoints);
 
         // จุดที่ส่งข้อมูล (เช่นใน updateSummary หรือหลังคำนวณเสร็จ)
-        async function sendResult(payload) {
-        const res = await fetch(`${API_BASE}/api/submit`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-        if (!res.ok) {
-            // แสดงรายละเอียดเวลา error จะได้ไล่ง่าย
-            const txt = await res.text();
-            throw new Error(`HTTP ${res.status}: ${txt}`);
-        }
-        return res.json();
-        }
-
-        // ตัวอย่างการเรียก (ใส่ตรงจุดสรุปผล)
-        sendResult({
-        riskPercentage: String(riskLevel.percentage), // เช่น "20"
-        gender: userData.gender,                       // "ชาย"/"หญิง"/"อื่นๆ"
-        age: Number(userData.age)
-        }).then(console.log).catch(console.error);
+        fetch(`${API_BASE}/api/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            riskPercentage: String(riskLevel.percentage), // ex. "20"
+            gender: userData.gender,                      // "ชาย"/"หญิง"/"อื่นๆ"
+            age: Number(userData.age)                     // ตัวเลข
+        })
+        }).then(r => r.json())
+        .then(console.log)
+        .catch(console.error);
 
     }
     
