@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const timeEstimate = document.getElementById('time-estimate');
     const recommendationText = document.getElementById('recommendation-text');
     // ชี้ไปที่ Backend (Render)
-    const API_BASE = 'https://stroke2-backend.onrender.com';
+    const API_BASE = 'https://stroke2-backend.onrender.com/';
 
     
     // Form elements
@@ -296,20 +296,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // Generate recommendation
         generateRecommendation(riskLevel, totalPoints);
 
-                // ส่งผลการประเมินไป backend
-        // ชี้ไปที่ backend บน Render
-        const API_BASE = 'https://stroke2-backend.onrender.com';
-
-        // ฟังก์ชันยิงข้อมูลไปเก็บ
-        async function sendResult(payload){
+        // จุดที่ส่งข้อมูล (เช่นใน updateSummary หรือหลังคำนวณเสร็จ)
+        async function sendResult(payload) {
         const res = await fetch(`${API_BASE}/api/submit`, {
             method: 'POST',
-            headers: {'Content-Type':'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
+        if (!res.ok) {
+            // แสดงรายละเอียดเวลา error จะได้ไล่ง่าย
+            const txt = await res.text();
+            throw new Error(`HTTP ${res.status}: ${txt}`);
+        }
         return res.json();
         }
 
+        // ตัวอย่างการเรียก (ใส่ตรงจุดสรุปผล)
+        sendResult({
+        riskPercentage: String(riskLevel.percentage), // เช่น "20"
+        gender: userData.gender,                       // "ชาย"/"หญิง"/"อื่นๆ"
+        age: Number(userData.age)
+        }).then(console.log).catch(console.error);
 
     }
     
